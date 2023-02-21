@@ -1,0 +1,137 @@
+#bg_dark {
+    background-color: #042540;
+}
+
+#bg_light {
+    background-color: #e1f5e9;
+}
+
+#bg_dark_body {
+    background-color: #0c416c;
+}
+
+#bg_light_body {
+    background-color: #eefff2;
+}
+
+#bg_dark_genre {
+    background-color: #0b3a60;
+}
+
+#bg_light_genre {
+    background-color: #ebf8ee;
+}
+
+#bg_dark_card {
+    background-color: #0b3a60;
+}
+
+#bg_light_card {
+    background-color: #ebf8ee;
+}
+
+#bg_dark_badge {
+    background-color: rgb(119, 204, 196);
+
+}
+
+#bg_light_badge {
+    background-color: #d8f5e5;
+}
+
+#icon_color_dark {
+    color: #e1f5e9;
+}
+
+#icon_color_light {
+    color: #042540;
+}
+
+#text_color_dark {
+    color: #3edee3;
+}
+
+#text_color_light {
+    color: #255d80;
+}
+
+
+.barLight {
+    box-sizing: border-box;
+    min-height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.barLight a {
+    margin-right: 10px;
+    display: block;
+    color: #042540;
+    text-decoration: none;
+    font: 24px bold;
+}
+
+.barLight a[class='active'] {
+    text-decoration: none;
+    color: #12addb;
+}
+
+.barDark {
+    box-sizing: border-box;
+    min-height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.barDark a {
+    margin-right: 10px;
+    display: block;
+    color: #e1f5e9;
+    text-decoration: none;
+    font: 24px bold;
+}
+
+.barDark a[class='active'] {
+    text-decoration: none;
+    color: #12addb;
+}
+
+
+.genre_dark a {
+    display: block;
+    text-decoration: none;
+    font: 20px bold;
+    color: #e1f5e9;
+}
+
+
+.genre_light a {
+    display: block;
+    text-decoration: none;
+    font: 20px bold;
+    color: #042540;
+}
+
+.genre_light a:hover, .genre_dark a:hover {
+    font: 24px bold;
+}
+
+.genre_dark a[class='active'] {
+    text-decoration: none;
+    font: 24px bold;
+    color: #c8e6f1;
+    background-color: rgb(119, 204, 196);
+}
+
+.genre_light a[class='active'] {
+    text-decoration: none;
+    font: 24px bold;
+    color: #12addb;
+    background-color: rgb(210, 255, 218);
+}

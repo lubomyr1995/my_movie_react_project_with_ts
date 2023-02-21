@@ -1,5 +1,5 @@
 import {IGenre} from "./iGenre";
-import {IImage} from "./iImageAdd";
+import {IImage} from "./iImage";
 import {IVideo} from "./iVideo";
 
 export interface IInfo {
@@ -17,6 +17,7 @@ export interface IInfo {
     poster_path: string;
     vote_average: number;
     vote_count: number;
+    release_date: string;
     videos: IVideo;
     images: IImage;
 }
