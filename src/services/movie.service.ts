@@ -10,7 +10,9 @@ const movieService = {
     getMovieDetailsById: (movieId: number): IRes<IInfo> =>
         apiService.get(`${urls.movie}/${movieId}?append_to_response=videos,images`),
     getSearchMovies: (query: string, page: number): IRes<IServerResponse> =>
-        apiService.get(urls.search, {params: {query, page}})
+        apiService.get(urls.search, {params: {query, page}}),
+    getPopularMovies: (page: number): IRes<IServerResponse> =>
+        apiService.get(urls.movie + '/popular', {params: {page}})
 }
 
 export {movieService}

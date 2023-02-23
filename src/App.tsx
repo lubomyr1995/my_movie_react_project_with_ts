@@ -1,7 +1,15 @@
 import {FC} from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
 import {MainLayout} from "./layouts";
-import {GenresPage, MovieInfoPage, MoviesPage, NotFoundPage, SearchPage, UserInfoPage} from "./pages";
+import {
+    GenresPage,
+    MovieInfoPage,
+    MoviesPage,
+    NotFoundPage,
+    PopularMoviesPage,
+    SearchPage,
+    UserInfoPage
+} from "./pages";
 import './App.css'
 
 const App: FC = () => {
@@ -13,7 +21,8 @@ const App: FC = () => {
                 <Route path={'movies'} element={<MoviesPage/>}/>
                 <Route path={'movies/:id'} element={<MovieInfoPage/>}/>
                 <Route path={'genres'} element={<GenresPage/>}>
-                    <Route index element={<Navigate to={'28'}/>}/>
+                    <Route index element={<Navigate to={'popular'}/>}/>
+                    <Route path={'popular'} element={<PopularMoviesPage/>}/>
                     <Route path={':genreId'} element={<MoviesPage/>}/>
                 </Route>
                 <Route path={'search/movie'} element={<SearchPage/>}/>

@@ -4,6 +4,7 @@ export * from './Genre/Genre';
 export * from './MoviesList/MoviesList';
 export * from './MovieCard/MovieCard';
 export * from './GenreBadge/GenreBadge';
+export * from './TopicalityBadge/TopicalityBadge';
 export * from './Paginator/Paginator';
 export * from './MovieInfo/MovieInfo';
 export * from './Images/Images';

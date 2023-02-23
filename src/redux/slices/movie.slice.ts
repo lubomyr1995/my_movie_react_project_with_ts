@@ -73,6 +73,19 @@ const getSearchMovies = createAsyncThunk<IServerResponse, { query: string, page:
     }
 );
 
+const getPopularMovie = createAsyncThunk<IServerResponse, { page: number }>(
+    'movieSlice/getPopularMovie',
+    async ({page}, {rejectWithValue}) => {
+        try {
+            const {data} = await movieService.getPopularMovies(page)
+            return data
+        } catch (e) {
+            const err = e as AxiosError
+            return rejectWithValue(err.response?.data)
+        }
+    }
+)
+
 const getMovieWithContent = createAsyncThunk<IInfo, { movieId: number }>(
     'movieSlice/getMovieWithContent',
     async ({movieId}, {rejectWithValue}) => {
@@ -85,6 +98,7 @@ const getMovieWithContent = createAsyncThunk<IInfo, { movieId: number }>(
         }
     }
 );
+
 
 const movieSlice = createSlice({
     name: 'movieSlice',
@@ -154,6 +168,25 @@ const movieSlice = createSlice({
                 state.errors = action.payload
             })
 
+            // getPopularMovie
+            .addCase(getPopularMovie.pending, state => {
+                state.loading = true
+                state.errors = false
+                state.movies = []
+                state.total_pages = 1
+                state.page = 1
+            })
+            .addCase(getPopularMovie.fulfilled, (state, action) => {
+                state.loading = false
+                const {results, total_pages, page} = action.payload
+                state.movies = results
+                state.total_pages = total_pages
+                state.page = page
+            })
+            .addCase(getPopularMovie.rejected, (state, action) => {
+                state.errors = action.payload
+            })
+
             // getMovieWithContent
             .addCase(getMovieWithContent.pending, (state) => {
                 state.loading = true
@@ -183,7 +216,8 @@ const movieActions = {
     getAllGenres,
     getAllMovies,
     getSearchMovies,
-    getMovieWithContent
+    getMovieWithContent,
+    getPopularMovie
 }
 
 export default movieReducer

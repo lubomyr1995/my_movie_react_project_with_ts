@@ -11,15 +11,22 @@ interface IProps {
 }
 
 const Videos: FC<IProps> = ({videos}) => {
+    const origin = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+    const opts = {
+        height: '390',
+        width: '640',
+        playerVars: {
+            autoplay: 0,
+            origin: origin
+        },
+    };
     return (
         <div>
-            {videos.length > 6 &&
-                <YouTube videoId={videos[0].key} />}
-            {videos.length < 6 && < Carousel width={700}>
-                {videos.map(video => (
-                    <YouTube videoId={video.key}/>
+            <Carousel width={900}>
+                {videos.slice(0, 5).map((video) => (
+                    <YouTube style={{width:"100%"}} key={video.id} opts={opts} videoId={video.key}/>
                 ))}
-            </Carousel>}
+            </Carousel>
         </div>
     );
 };

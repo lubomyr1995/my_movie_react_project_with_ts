@@ -52,21 +52,10 @@ const Header: FC = () => {
         },
     }));
 
-    const SearchIconWrapper = styled('div')(({theme}) => ({
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    }));
-
     const StyledInputBase = styled(InputBase)(({theme}) => ({
         color: 'inherit',
         '& .MuiInputBase-input': {
             padding: theme.spacing(1, 1, 1, 0),
-            // vertical padding + font size from searchIcon
             paddingLeft: `calc(1em + ${theme.spacing(4)})`,
             transition: theme.transitions.create('width'),
             width: '100%',
@@ -91,11 +80,8 @@ const Header: FC = () => {
                     <NavLink onClick={() => dispatch(movieActions.setSearchQuery(null))} to={'/movies'}>MOVIES</NavLink>
                     <NavLink onClick={() => dispatch(movieActions.setSearchQuery(null))} to={'/genres'}>GENRES</NavLink>
                 </Box>
-                <Box sx={{ml: 10}}>
+                <Box sx={{ml: 10, display: 'flex'}}>
                     <Search onSubmit={handleSubmit(search)}>
-                        <SearchIconWrapper>
-                            <SearchIcon/>
-                        </SearchIconWrapper>
                         <StyledInputBase
                             placeholder="Search…"
                             inputProps={{'aria-label': 'search'}}
@@ -103,6 +89,8 @@ const Header: FC = () => {
                         />
                     </Search>
                 </Box>
+                <SearchIcon id={isDarkMode ? 'icon_color_dark' : 'icon_color_light'} type={'button'}
+                            onClick={handleSubmit(search)}>ss</SearchIcon>
                 <Box sx={{flexGrow: 1}}/>
                 <Box>
                     <Switch

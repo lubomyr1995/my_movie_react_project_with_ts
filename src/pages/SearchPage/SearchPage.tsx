@@ -10,7 +10,7 @@ const SearchPage: FC = () => {
         <div id={isDarkMode ? 'bg_dark_body' : 'bg_light_body'} style={{minHeight: "100vh"}}>
             <div style={{width: "100%"}}>{searchQuery &&
                 <div id={isDarkMode ? 'icon_color_dark' : 'icon_color_light'}
-                     style={{textAlign: "center", fontSize: "26px", padding: 10}}>Results
+                     style={{textAlign: "center", fontSize: "26px", padding: 10}}>Result
                     Searching: "{searchQuery}"
                 </div>}
                 {loading && <Loading/>}

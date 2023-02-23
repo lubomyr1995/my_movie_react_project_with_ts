@@ -10,7 +10,6 @@ import {GenreBadge} from "../GenreBadge/GenreBadge";
 import {Images} from "../Images/Images";
 import {ImagesLogo} from "../ImagesLogo/ImagesLogo";
 import {movieActions} from "../../redux";
-
 import {Videos} from "../Videos/Videos";
 
 
@@ -50,7 +49,7 @@ const MovieInfo: FC<IProps> = ({movie}) => {
                     <CloseIcon sx={{cursor: 'pointer'}} onClick={() => dispatch(movieActions.setFlag(false))}/>
                 </div>
                 <img onClick={() => dispatch(movieActions.setFlag(false))}
-                     style={{width: '100%'}} src={urlImg} alt="xxx"/>
+                     style={{width: '100%', backgroundColor: 'silver'}} src={urlImg} alt="xxx"/>
             </div>}
 
             <div id={isDarkMode ? 'icon_color_dark' : 'icon_color_light'} className={css.container_title}>
