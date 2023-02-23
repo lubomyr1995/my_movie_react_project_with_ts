@@ -11,13 +11,12 @@ interface IProps {
 }
 
 const Videos: FC<IProps> = ({videos}) => {
-    const origin = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
     const opts = {
         height: '390',
         width: '640',
         playerVars: {
             autoplay: 0,
-            origin: origin
+            origin: 'http://localhost:3000/'
         },
     };
     return (

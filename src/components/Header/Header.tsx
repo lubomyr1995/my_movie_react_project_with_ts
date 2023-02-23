@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import {NavLink, useNavigate} from "react-router-dom";
+import {createSearchParams, NavLink, useNavigate} from "react-router-dom";
 import {
     alpha,
     AppBar,
@@ -30,8 +30,7 @@ const Header: FC = () => {
     const {register, handleSubmit, reset} = useForm<IFormInput>();
 
     const search: SubmitHandler<IFormInput> = (data): void => {
-        dispatch(movieActions.setSearchQuery(data.name))
-        navigate('search/movie')
+        navigate({pathname: 'movies', search: createSearchParams({title: data.name}).toString()})
         reset()
     }
 
@@ -77,8 +76,8 @@ const Header: FC = () => {
                     </Typography>
                 </Box>
                 <Box className={isDarkMode ? 'barDark' : 'barLight'}>
-                    <NavLink onClick={() => dispatch(movieActions.setSearchQuery(null))} to={'/movies'}>MOVIES</NavLink>
-                    <NavLink onClick={() => dispatch(movieActions.setSearchQuery(null))} to={'/genres'}>GENRES</NavLink>
+                    <NavLink to={'/movies'}>MOVIES</NavLink>
+                    <NavLink to={'/genres'}>GENRES</NavLink>
                 </Box>
                 <Box sx={{ml: 10, display: 'flex'}}>
                     <Search onSubmit={handleSubmit(search)}>

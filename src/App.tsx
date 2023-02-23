@@ -7,7 +7,6 @@ import {
     MoviesPage,
     NotFoundPage,
     PopularMoviesPage,
-    SearchPage,
     UserInfoPage
 } from "./pages";
 import './App.css'
@@ -25,9 +24,7 @@ const App: FC = () => {
                     <Route path={'popular'} element={<PopularMoviesPage/>}/>
                     <Route path={':genreId'} element={<MoviesPage/>}/>
                 </Route>
-                <Route path={'search/movie'} element={<SearchPage/>}/>
                 <Route path={'user'} element={<UserInfoPage/>}/>
-
                 <Route path={'*'} element={<NotFoundPage/>}/>
             </Route>
         </Routes>

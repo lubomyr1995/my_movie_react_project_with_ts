@@ -14,7 +14,7 @@ const UserInfoPage: FC = () => {
                 <h5>surname: Zmiiovskyi</h5>
                 <h5>email: lubomyr1995@gmail.com</h5>
                 <h5>address: Lviv</h5>
-                <h5>phone: 0937368592</h5>
+                <h5>telegram: @lubomyr1995</h5>
             </div>
         </div>
     );

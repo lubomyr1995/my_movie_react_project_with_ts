@@ -14,7 +14,6 @@ interface IState {
     total_pages: number;
     loading: boolean;
     errors: boolean | string | unknown;
-    searchQuery: string;
     showImage: boolean;
     urlImg: string;
 }
@@ -29,9 +28,8 @@ const initialState: IState = {
     total_pages: 1,
     loading: false,
     errors: false,
-    searchQuery: '',
     showImage: false,
-    urlImg: ''
+    urlImg: '',
 }
 
 const getAllGenres = createAsyncThunk<IGenreResponse, void>(
@@ -60,7 +58,7 @@ const getAllMovies = createAsyncThunk<IServerResponse, { page: number, genre: nu
     }
 );
 
-const getSearchMovies = createAsyncThunk<IServerResponse, { query: string, page: number }>(
+const getSearchMovies = createAsyncThunk<IServerResponse, { query: string | null, page: number }>(
     'movieSlice/getSearchMovies',
     async ({query, page}, {rejectWithValue}) => {
         try {
@@ -107,15 +105,13 @@ const movieSlice = createSlice({
         setDarkMode: state => {
             state.isDarkMode = !state.isDarkMode
         },
-        setSearchQuery: (state, action) => {
-            state.searchQuery = action.payload
-        },
         setFlag: (state, action) => {
             state.showImage = action.payload
         },
         setImage: (state, action) => {
             state.urlImg = action.payload
-        }
+        },
+
     },
     extraReducers: builder => {
         builder
@@ -206,11 +202,10 @@ const movieSlice = createSlice({
     }
 });
 
-const {reducer: movieReducer, actions: {setDarkMode, setSearchQuery, setFlag, setImage}} = movieSlice;
+const {reducer: movieReducer, actions: {setDarkMode, setFlag, setImage}} = movieSlice;
 
 const movieActions = {
     setDarkMode,
-    setSearchQuery,
     setFlag,
     setImage,
     getAllGenres,
