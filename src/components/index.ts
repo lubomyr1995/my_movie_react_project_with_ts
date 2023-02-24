@@ -3,6 +3,7 @@ export * from './GenreList/GenreList';
 export * from './Genre/Genre';
 export * from './MoviesList/MoviesList';
 export * from './MovieCard/MovieCard';
+export * from './Topicality/Topicality';
 export * from './GenreBadge/GenreBadge';
 export * from './TopicalityBadge/TopicalityBadge';
 export * from './Paginator/Paginator';

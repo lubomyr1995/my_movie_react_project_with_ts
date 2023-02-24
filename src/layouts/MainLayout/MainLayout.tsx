@@ -10,15 +10,18 @@ const MainLayout: FC = () => {
 
     const dispatch = useAppDispatch();
     const {genreId} = useParams<{ genreId: string | undefined }>();
-    const [query] = useSearchParams({page: '1', title: ''});
-
+    const [query] = useSearchParams({page: '1'});
 
     useEffect(() => {
         if (query.get('title')) {
-            dispatch(movieActions.getSearchMovies({query: query.get('title'), page: Number(query.get('page'))}))
+            dispatch(movieActions.getSearchMovies({page: Number(query.get('page')), query: query.get('title')}))
             dispatch(movieActions.getAllGenres());
         } else {
-            dispatch(movieActions.getAllMovies({page: Number(query.get('page')), genre: Number(genreId)}))
+            dispatch(movieActions.getAllMovies({
+                page: Number(query.get('page')),
+                genre: genreId,
+                sort_by: query.get('rating')
+            }))
             dispatch(movieActions.getAllGenres());
         }
     }, [dispatch, genreId, query])

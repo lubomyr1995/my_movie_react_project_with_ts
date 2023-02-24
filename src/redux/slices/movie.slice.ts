@@ -45,11 +45,11 @@ const getAllGenres = createAsyncThunk<IGenreResponse, void>(
     }
 );
 
-const getAllMovies = createAsyncThunk<IServerResponse, { page: number, genre: number }>(
+const getAllMovies = createAsyncThunk<IServerResponse, { page: number, genre: string | undefined, sort_by: string | null }>(
     'movieSlice,getAllMovies',
-    async ({page, genre}, {rejectWithValue}) => {
+    async ({page, genre, sort_by}, {rejectWithValue}) => {
         try {
-            const {data} = await movieService.getMovies(page, genre)
+            const {data} = await movieService.getMovies(page, genre, sort_by)
             return data
         } catch (e) {
             const err = e as AxiosError
@@ -71,18 +71,6 @@ const getSearchMovies = createAsyncThunk<IServerResponse, { query: string | null
     }
 );
 
-const getPopularMovie = createAsyncThunk<IServerResponse, { page: number }>(
-    'movieSlice/getPopularMovie',
-    async ({page}, {rejectWithValue}) => {
-        try {
-            const {data} = await movieService.getPopularMovies(page)
-            return data
-        } catch (e) {
-            const err = e as AxiosError
-            return rejectWithValue(err.response?.data)
-        }
-    }
-)
 
 const getMovieWithContent = createAsyncThunk<IInfo, { movieId: number }>(
     'movieSlice/getMovieWithContent',
@@ -164,25 +152,6 @@ const movieSlice = createSlice({
                 state.errors = action.payload
             })
 
-            // getPopularMovie
-            .addCase(getPopularMovie.pending, state => {
-                state.loading = true
-                state.errors = false
-                state.movies = []
-                state.total_pages = 1
-                state.page = 1
-            })
-            .addCase(getPopularMovie.fulfilled, (state, action) => {
-                state.loading = false
-                const {results, total_pages, page} = action.payload
-                state.movies = results
-                state.total_pages = total_pages
-                state.page = page
-            })
-            .addCase(getPopularMovie.rejected, (state, action) => {
-                state.errors = action.payload
-            })
-
             // getMovieWithContent
             .addCase(getMovieWithContent.pending, (state) => {
                 state.loading = true
@@ -196,7 +165,6 @@ const movieSlice = createSlice({
                 state.movie = action.payload
             })
             .addCase(getMovieWithContent.rejected, (state, action) => {
-                console.log(action.payload)
                 state.errors = action.payload
             })
     }
@@ -211,8 +179,7 @@ const movieActions = {
     getAllGenres,
     getAllMovies,
     getSearchMovies,
-    getMovieWithContent,
-    getPopularMovie
+    getMovieWithContent
 }
 
 export default movieReducer

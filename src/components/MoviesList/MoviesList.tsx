@@ -22,7 +22,7 @@ const MoviesList: FC = () => {
                 {movies.length > 0 && movies.map(movie => <MovieCard key={movie.id} movie={movie} genres={genres}/>)}
             </div>
 
-            <div style={{width: "100%", padding: 20, display: "flex", justifyContent: "center"}}>
+            <div style={{width: "100%", paddingTop: 20, paddingBottom: 20, display: "flex", justifyContent: "center"}}>
                 <Paginator/>
             </div>
 

@@ -39,6 +39,14 @@
     background-color: #d8f5e5;
 }
 
+#bg_dark_top_badge {
+    background-color: #e1f5e9;
+}
+
+#bg_light_top_badge {
+    background-color: #93f8b6;
+}
+
 #icon_color_dark {
     color: #e1f5e9;
 }
